@@ -39,6 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'users',
+    'rooms',
+    'reservations',
+    'billing',
+    'maintenance',
+    'reviews',
+    'rest_framework.authtoken',  
+    'django.contrib.postgres',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +68,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -85,6 +94,8 @@ DATABASES = {
     }
 }
 
+
+AUTH_USER_MODEL = 'users.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

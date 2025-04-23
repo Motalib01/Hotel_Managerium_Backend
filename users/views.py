@@ -1,6 +1,7 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
+from .models import User
+from .serializers import UserSerializer
 
-@api_view(['GET'])
-def hello_world(request):
-    return Response({"message": "Hello from Django REST Framework!"})
+class UserViewSet(ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
