@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'Managerium.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'managerium-db',        # Replace with your PostgreSQL DB name
+        'USER': 'postgres',        # Replace with your PostgreSQL username
+        'PASSWORD': '12345',# Replace with your PostgreSQL password
+        'HOST': 'localhost',           # Default: localhost (or use the IP address if needed)
+        'PORT': '5432',                # Default PostgreSQL port
     }
 }
 
