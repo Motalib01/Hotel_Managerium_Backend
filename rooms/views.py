@@ -1,7 +1,11 @@
-from rest_framework.viewsets import ModelViewSet
-from .models import Room
-from .serializers import RoomSerializer
+from rest_framework import viewsets
+from .models import Room, RoomPicture
+from .serializers import RoomSerializer, RoomPictureSerializer
 
-class RoomViewSet(ModelViewSet):
-    queryset = Room.objects.all()
+class RoomViewSet(viewsets.ModelViewSet):
+    queryset = Room.objects.all()# pylint: disable=no-member
     serializer_class = RoomSerializer
+
+class RoomPictureViewSet(viewsets.ModelViewSet):
+    queryset = RoomPicture.objects.all()# pylint: disable=no-member
+    serializer_class = RoomPictureSerializer

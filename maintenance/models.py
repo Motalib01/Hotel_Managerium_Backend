@@ -14,6 +14,7 @@ class MaintenanceRequest(models.Model):
         ('in_progress', 'In Progress'),
         ('completed', 'Completed'),
     )
+
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     reported_by = models.ForeignKey(User, related_name='reported_issues', on_delete=models.CASCADE)
     technician = models.ForeignKey(User, related_name='assigned_issues', on_delete=models.SET_NULL, null=True, blank=True)
@@ -23,4 +24,4 @@ class MaintenanceRequest(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Maintenance for Room {self.room.room_number} - {self.status}"  # pylint: disable=no-member
+        return f"Maintenance - {self.room.room_number} ({self.status})"# pylint: disable=no-member

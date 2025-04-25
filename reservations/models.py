@@ -12,6 +12,7 @@ class Reservation(models.Model):
         ('room', 'Room'),
         ('restaurant', 'Restaurant'),
     )
+
     client = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.SET_NULL, null=True, blank=True)
     start_date = models.DateField()
@@ -20,5 +21,4 @@ class Reservation(models.Model):
     type = models.CharField(max_length=20, choices=TYPE_CHOICES)
 
     def __str__(self):
-        return f"Reservation by {self.client.username} ({self.type})"  # pylint: disable=no-member
-
+        return f"{self.client.username} - {self.type} Reservation"# pylint: disable=no-member
