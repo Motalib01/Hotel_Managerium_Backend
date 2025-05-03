@@ -29,8 +29,8 @@ ALLOWED_HOSTS = []
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# Application definition
 
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken',
-    'djoser',
     'users',
     'hotel',
     'rooms',
@@ -91,18 +89,24 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'managerium-db',        # Replace with your PostgreSQL DB name
         'USER': 'postgres',        # Replace with your PostgreSQL username
-        'PASSWORD': '12345',# Replace with your PostgreSQL password
+        'PASSWORD': '12345',       # Replace with your PostgreSQL password
         'HOST': 'localhost',           # Default: localhost (or use the IP address if needed)
         'PORT': '5432',                # Default PostgreSQL port
     }
 }
 
 
+# Swagger settings (now using session auth)
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': True,
+}
+
 AUTH_USER_MODEL = 'users.User'
 
+# REST Framework settings: using SessionAuthentication
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',

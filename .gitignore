@@ -14,5 +14,8 @@ db.sqlite3
 # Logs
 *.log
 
+# Media files (uploads)
+media/
+
 # VSCode or other IDE settings
 .vscode/
